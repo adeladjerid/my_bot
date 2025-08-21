@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    xacro:<xacro:include filename="inertial_macros.xacro" />
+  <!-- Define material only once -->
+    <material name="white">
+        <color rgba="1 1 1 1"/>   
+    </material>
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>   
+    <material name="blue">
+        <color rgba="0 0 0.5 1" />
+    </material>
+    <!--start link llllllllllllllllllllllllllllllllllllllllllllllllllll -->
+    <link name="base_footprint" />
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size="0.6 0.4 0.2"/>    
+            </geometry>
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+            <!-- Apply material -->
+            <material name="white"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.6 0.4 0.2"/>    
+            </geometry>
+            <origin xyz="0 0 0.1" rpy="0 0 0"/>
+            <!-- Apply material -->
+            <material name="white"/>
+        </collision>    
+    </link>
+    <link name="lidar">
+        <visual>
+            <geometry>
+                <cylinder radius="0.1" length="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.1" length="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <material name="black"/>
+        </collision>
+    </link>
+    <link name="whil_wright">
+        <visual>
+            <geometry>
+                <cylinder radius="0.1" length="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0 "/>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.1" length="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0 "/>
+            <material name="blue"/>
+        </collision>
+    </link>
+    <link name="whil_left">
+        <visual>
+            <geometry>
+                <cylinder radius="0.1" length="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0 "/>
+            <material name="blue"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.1" length="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0" rpy="1.57 0 0 "/>
+            <material name="blue"/>
+        </collision>
+    </link>
+
+    <link name="first_while">
+        <visual>
+            <geometry>
+                    <sphere radius="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0"/>
+        </visual>
+        <collision>
+            <geometry>
+                    <sphere radius="0.05"/>
+            </geometry>
+            <origin xyz="0 0 0"/>
+        </collision>
+    </link>
+<!--lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllink eded lllllllllllllllllllllllllllllllllll-->
+    <joint name="base_lidar_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="lidar"/>
+        <origin xyz="0 0 0.225" rpy="0 0 0"/>
+    </joint>
+    <joint name="base_whil_wright_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="whil_wright"/>
+        <origin xyz="-0.15 -0.225 0 " rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+    <joint name="base_whil_left_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="whil_left"/>
+        <origin xyz="-0.15 0.225 0 " rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+    <joint name="base_first_while_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="first_while"/>
+        <origin xyz="0.25 0 -0.05"/>
+    </joint>
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link" />
+        <origin xyz="0 0 0.1"/>
+    </joint>
+
+</robot>
