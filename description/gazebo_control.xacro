@@ -4,8 +4,8 @@
         <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
 
             <!-- wheel information-->
-            <left_joint>base_whil_left_joint</left_joint>
-            <right_joint>base_whil_wright_joint</right_joint>
+            <left_joint>base_left_wheel_joint</left_joint>
+            <right_joint>base_right_wheel_joint</right_joint>
             <wheel_separation>0.51</wheel_separation>
             <wheel_diameter>0.1</wheel_diameter>
             
@@ -20,9 +20,6 @@
             <publish_odom>true</publish_odom>
             <publish_odom_tf>true</publish_odom_tf>
             <publish_wheel_tf>true</publish_wheel_tf>
-
-
-
         </plugin>
     </gazebo>
 </robot>
