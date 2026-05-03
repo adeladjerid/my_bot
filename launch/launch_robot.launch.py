@@ -13,7 +13,8 @@ from launch.event_handlers import OnProcessStart
 
 from launch_ros.actions import Node
 
-
+import subprocess
+from launch import LaunchDescription
 
 def generate_launch_description():
 
@@ -30,7 +31,7 @@ def generate_launch_description():
     )
 
     
-
+    subprocess.run(['stty', '-F', '/dev/ttyUSB0', '-hupcl'])
 
     robot_description = Command(['ros2 param get --hide-type /robot_state_publisher robot_description'])
 
