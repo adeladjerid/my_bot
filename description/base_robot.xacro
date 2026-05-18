@@ -20,6 +20,7 @@
 
     <!--start link llllllllllllllllllllllllllllllllllllllllllllllllllll -->
     <link name="base_footprint" />
+    
     <link name="base_link">
         <visual>
             <geometry>
